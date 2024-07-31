@@ -1,0 +1,40 @@
+這個檔案紀錄05_Loss_Function.py中所有細節:
+
+
+1. Hinge Loss
+**特點：
+    A.主要用於二元分類問題，特別是支持向量機（SVM）。
+    B.目標是將預測值與實際標籤的間距最大化。
+    C.當預測值與實際標籤的間距小於 1 時，損失會增大，否則損失為 0。
+
+2. Mean Squared Error (MSE)
+**特點：
+    A.主要用於回歸問題。
+    B.測量預測值與實際值之間的平均平方差。
+    C.對於大誤差較為敏感，因為平方操作放大了誤差。
+
+3. Sparse Categorical Cross entropy
+**特點：
+    A.用於多類別分類問題，但標籤是整數（即類別索引），而不是 one-hot 編碼。
+    B.適合處理標籤數據量大時，節省空間和計算資源。
+    C.當模型的預測與實際標籤不匹配時，損失會增加。
+
+4. Categorical Cross entropy
+**特點：
+    A.用於多類別分類問題，標籤是 one-hot 編碼格式。
+    B.測量模型預測概率分佈與實際 one-hot 標籤之間的差距。
+    C.適合標籤數據量較小或中等大小的情況。
+
+5. Binary Cross entropy
+**特點：
+    A.主要用於二元分類問題。
+    B.測量預測概率與實際標籤之間的差距。
+    C.適合輸出層使用 sigmoid 激活函數的情況。
+
+***總結
+    1. Hinge Loss：主要用於二元分類（如 SVM），對於預測結果和實際標籤的間距進行度量。
+    2. Mean Squared Error (MSE)：主要用於回歸問題，計算預測值和實際值的平方差。
+    3. SparseCategoricalCrossentropy：用於多類別分類問題，標籤是整數，節省空間和計算資源。
+    4. CategoricalCrossentropy：用於多類別分類問題，標籤是 one-hot 編碼。
+    5. Binary Crossentropy：用於二元分類問題，計算預測概率和實際標籤之間的交叉熵。
+

@@ -11,8 +11,8 @@ print(x_train.shape, y_train.shape, x_test.shape, y_test.shape)
 # 此步驟在此數據集上不需要進行數據清理
 
 # Step 3. Feature Engineering (Feature as between 0 ~ 1)
-x_train_norm, x_test_norm = x_train / 255, x_test / 255     # 將圖像數據正規化到 0 到 1 之間
-x_train_norm[0]                                             # 顯示第一張訓練圖像的正規化數據
+x_train_norm, x_test_norm = x_train / 255, x_test / 255             # 將圖像數據正規化到 0 到 1 之間
+print(x_train_norm[0])                                              # 顯示第一張訓練圖像的正規化數據
 
 # Step 4. Data Split (Train & Validation)
 # 此步驟在此數據集上不需要進行額外的數據分割，因為使用了 `validation_split` 參數

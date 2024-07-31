@@ -17,7 +17,7 @@ tn, fp, fn, tp = confusion_matrix(y_true, y_pred).ravel()   # 計算並展平混
 print(f'TP={tp}, FP={fp}, TN={tn}, FN={fn}')                # 打印 TP, FP, TN, FN 的值
 
 # 繪製混淆矩陣的可視化
-fix, ax = plt.subplots(figsize=(5, 5))                  # 創建一個 2.5x2.5 的圖形和子圖
+fix, ax = plt.subplots(figsize=(2.5, 2.5))                  # 創建一個 2.5x2.5 的圖形和子圖
 
 # 1:藍色, 0:白色
 ax.matshow([[1, 0], [0, 1]], cmap=plt.cm.Blues, alpha=0.3)  # 使用藍色顯示混淆矩陣的格子
@@ -31,9 +31,9 @@ ax.text(x=1, y=1, s=fn, va='center', ha='center')  # 在 (1, 1) 添加 FN 的值
 plt.xlabel('Actual', fontsize=20)   # 設置 x 軸標籤
 plt.ylabel('Predict', fontsize=20)  # 設置 y 軸標籤
 
-plt.xticks([0, 1], ['T', 'F'])  # 設置 x 軸刻度
-plt.yticks([0, 1], ['P', 'N'])  # 設置 y 軸刻度
-plt.show()                      # 顯示圖形
+plt.xticks([0, 1], ['T', 'F'])      # 設置 x 軸刻度
+plt.yticks([0, 1], ['P', 'N'])      # 設置 y 軸刻度
+plt.show()                          # 顯示圖形
 
 # 計算準確率 (Accuracy)
 m = metrics.Accuracy()              # 創建 Accuracy 計算實例

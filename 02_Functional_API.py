@@ -22,6 +22,8 @@ model = tf.keras.Model(inputs=InputTensor, outputs=Output)  # 創建模型，指
 # 顯示模型摘要
 model.summary()  # 打印模型摘要
 
+print('-' * 40)
+
 # 設定變數
 num_tags = 12           # 標籤數量
 num_words = 10000       # 單詞數量

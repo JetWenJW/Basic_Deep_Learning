@@ -46,7 +46,7 @@ model = tf.keras.models.Sequential([
 # 刪除一個神經層
 model.pop()                             # 刪除模型中的最後一層
 print(f'神經層數{len(model.layers)}')   # 打印模型中剩餘的神經層數
-model.layers                            # 顯示模型中的神經層
+print(model.layers)                     # 顯示模型中的神經層
 
 print("-" * 20, "Part 3", '-' * 20)
 
@@ -71,7 +71,7 @@ model = tf.keras.models.Sequential([
 
 # 讀取模型權重
 print(f'神經層參數類別總數:{len(model.weights)}')        # 打印模型中參數的總數
-model.weights                                           # 顯示模型中所有權重
+print(model.weights)                                    # 顯示模型中所有權重
 print(f'{layer2.name}: {layer2.weights}')               # 打印第二個神經層的權重
 
 # 獲取模型摘要
@@ -100,6 +100,9 @@ model.add(layers.MaxPooling2D(pool_size = (2, 2)))              # 添加最大�
 model.summary()  # 打印模型摘要
 print("-" * 20, "Part 7", '-' * 20)
 
+# GlobalMaxPooling2D都會將其縮減為單個值。
+# 這通常用於卷積網絡的末端，
+# 將特徵圖轉換為一維向量，以便進行分類或其他任務。
 model.add(layers.GlobalMaxPooling2D())  # 添加全局最大池化層
 model.add(layers.Dense(10))             # 添加全連接層，10個神經元
 model.summary()  # 打印模型摘要

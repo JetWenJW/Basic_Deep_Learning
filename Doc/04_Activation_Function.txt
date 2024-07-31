@@ -1,0 +1,12 @@
+這個檔案紀錄04_Activation_Function.py中所有細節:
+
+1. ReLU和Leaky ReLU有甚麼區別?
+Ans:ReLU 和 Leaky ReLU 都是有效的激活函數，它們的主要區別在於如何處理負數輸入。
+    ReLU 簡單且高效，但可能導致「死亡 ReLU」問題；
+    Leaky ReLU 通過引入小的負數斜率來緩解這個問題。
+    選擇哪一種激活函數取決於具體的問題和需求。
+
+
+***整段程式碼，在於展示ReLU, Leaky ReLU, Sigmoid, tanh, Softmax，
+這些 Activation Function的區別，並透過Numpy中的API函示來手動實作
+以及透過tensorflow API實作，並繪製圖形。

@@ -76,7 +76,7 @@ new_model = tf.keras.models.model_from_json(json_config)
 
 # 取得模型權重
 weights = model.get_weights()
-weights
+print(weights)
 
 # 設定新的模型權重
 new_model.set_weights(weights)
@@ -88,56 +88,59 @@ new_model.compile(optimizer='adam',
 
 # 評估新的模型性能
 score = new_model.evaluate(x_test_norm, y_test, verbose=0)
-score
+print(score)
+print("-" * 10, "Json Done~", "-" * 10)
 
-# 取得模型結構時，Custom Layer 需註冊
+# 使用 Keras 註冊自定義層，以便保存和載入模型時能識別這個層
 @tf.keras.utils.register_keras_serializable()
 class CustomLayer(tf.keras.layers.Layer):
     def __init__(self, units=32, **kwargs):
         super(CustomLayer, self).__init__(**kwargs)
         self.units = units
 
+    # 建立層的權重
     def build(self, input_shape):
-        # 建立層的權重
         self.w = self.add_weight(
-            shape=(input_shape[-1], self.units),
-            initializer="random_normal",
-            trainable=True,
+            shape = (input_shape[-1], self.units),
+            initializer = "random_normal",
+            trainable = True,
         )
         self.b = self.add_weight(
-            shape=(self.units,), initializer="random_normal", trainable=True
+            shape = (self.units,), 
+            initializer = "random_normal", 
+            trainable = True
         )
 
+    # 定義層的前向計算過程
     def call(self, inputs):
-        # 定義層的前向計算過程
         return tf.matmul(inputs, self.w) + self.b
     
+    # 取得層的配置
     def get_config(self):
-        # 取得層的配置
         config = super(CustomLayer, self).get_config()
         config.update({"units": self.units})
         return config
-    
+
+# 自定義激活函數
 def custom_activation(x):
-    # 自定義激活函數
     return tf.nn.tanh(x) ** 2
 
 # 使用 Custom Layer 和 Custom Activation 建立模型
-inputs = tf.keras.Input((32,))  # 輸入層，具有 32 個特徵
-x = CustomLayer(32)(inputs)  # 使用 CustomLayer 層
-outputs = tf.keras.layers.Activation(custom_activation)(x)  # 使用自定義激活函數
-model = tf.keras.Model(inputs, outputs)  # 創建模型
+inputs = tf.keras.Input((32,))                              # 定義輸入層，具有 32 個特徵
+x = CustomLayer(32)(inputs)                                 # 添加 CustomLayer 層，輸出 32 個單元
+outputs = tf.keras.layers.Activation(custom_activation)(x)  # 添加自定義激活函數
+model = tf.keras.Model(inputs, outputs)                     # 創建模型
 
 # 取得模型結構
 config = model.get_config()
 
 # 使用註冊的 Custom Layer 創建新模型
 custom_objects = {"CustomLayer": CustomLayer, "custom_activation": custom_activation}
-with tf.keras.utils.custom_object_scope(custom_objects):
-    new_model = tf.keras.Model.from_config(config)
+with tf.keras.utils.custom_object_scope(custom_objects):    # 在 custom_object_scope 範圍內
+    new_model = tf.keras.Model.from_config(config)          # 根據配置創建新模型
 
 # 模型權重存檔
-model.save_weights('my_h5_model.weights.h5')
+model.save_weights('my_h5_model.weights.h5')                # 將模型權重保存到文件中
 
 # 載入模型權重
-model.load_weights('my_h5_model.weights.h5')
+model.load_weights('my_h5_model.weights.h5')                # 從文件中載入模型權重

@@ -3,16 +3,16 @@ from tensorflow.keras import layers
 
 # 建立模型
 model = tf.keras.models.Sequential([
-    tf.keras.layers.Flatten(input_shape=(28, 28)),                          # 第一層：將輸入的28x28圖像展平成一維向量
-    tf.keras.layers.Dense(128, activation='relu', name="layer1"),           # 第二層：全連接層，128個神經元，激活函數為ReLU，命名為layer1
-    tf.keras.layers.Dropout(0.2),                                           # 第三層：Dropout層，丟棄20%的神經元
-    tf.keras.layers.Dense(10, activation='softmax', name="layer2")          # 第四層：全連接層，10個神經元，激活函數為softmax，命名為layer2
+    tf.keras.layers.Flatten(input_shape = (28, 28)),                          # 第一層：將輸入的28x28圖像展平成一維向量
+    tf.keras.layers.Dense(128, activation = 'relu', name="layer1"),           # 第二層：全連接層，128個神經元，激活函數為ReLU，命名為layer1
+    tf.keras.layers.Dropout(0.2),                                             # 第三層：Dropout層，丟棄20%的神經元
+    tf.keras.layers.Dense(10, activation = 'softmax', name="layer2")          # 第四層：全連接層，10個神經元，激活函數為softmax，命名為layer2
 ])
 
 # 設定優化器
-model.compile(optimizer='adam',                         # 使用Adam優化器
-              loss='sparse_categorical_crossentropy',   # 損失函數為sparse_categorical_crossentropy
-              metrics=['accuracy']                      # 評估指標為準確率
+model.compile(optimizer = 'adam',                         # 使用Adam優化器
+              loss = 'sparse_categorical_crossentropy',   # 損失函數為sparse_categorical_crossentropy
+              metrics = ['accuracy']                      # 評估指標為準確率
               )
 
 # 顯示模型摘要

@@ -64,4 +64,4 @@ for i in range(11):                                             # 循環 11 次�
     grads = tape.gradient(loss_value, [var])                    # 計算損失對變數的梯度
     opt_adam.apply_gradients(zip(grads, [var]))                 # 將梯度應用到變數上進行更新
     if i % 2 == 0 and i > 0:                                    # 每 2 步打印一次變數值
-        print(f'Adam, 優化的步驟: {i}, 變數: {var.numpy()}')          # 打印當前優化步驟和變數值
+        print(f'Adam, 優化的步驟: {i}, 變數: {var.numpy()}')    # 打印當前優化步驟和變數值

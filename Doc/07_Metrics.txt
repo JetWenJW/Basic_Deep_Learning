@@ -1,0 +1,26 @@
+這個檔案紀錄07_Metrics.py中所有細節:
+
+
+1. 甚麼是混淆矩陣?
+Ans:
+    就是將TN，TP，FN，FP集合再一起的2x2矩陣
+
+2.甚麼是AUC?
+Ans:
+    AUC（Area Under the Curve）是一種用來衡量分類模型性能的指標，特別是在處理二分類問題時。
+    它的全名是「ROC曲線下的面積」（Area Under the Receiver Operating Characteristic Curve）。
+    AUC是一個重要的性能指標，能夠綜合評估分類模型的能力，特別是在類別不平衡的情況下。
+    它提供了一個單一的數值來表示模型在各種閾值下的分類能力。
+
+AUC的定義:AUC指的是ROC曲線下方的面積，取值範圍從0到1：
+    1. AUC = 1.0: 完美的分類模型，能夠將所有正例和負例正確地分開。
+    2. AUC = 0.5: 模型的性能和隨機猜測沒有區別，模型的預測能力很差。
+    3. AUC < 0.5: 模型的性能低於隨機猜測，可能需要進一步的調整或重新考慮模型。
+
+3.甚麼是ROC?
+Ans:
+    ROC（Receiver Operating Characteristic）曲線是一種圖形表示，用來展示分類模型在不同閾值下的性能。
+    它的橫軸是假陽性率（False Positive Rate, FPR），縱軸是Precision，也就是召回率（Recall）。
+    (註:Precision = (tp) / (tp + fn))
+
+***這整個程式碼，分別展示準確率，精確率，召回率，以及AUC等評估 模型的指標。

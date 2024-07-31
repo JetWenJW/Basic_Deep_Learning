@@ -1,0 +1,14 @@
+這個檔案紀錄10_cifar10_gray_CNN.py中所有細節:
+
+
+1. 第18行中'cast'是什麼語法?
+Ans:
+    tf.cast是Tensorflow中，將張量轉換為指定數據類型的操作
+
+2. Sparse Categorical Cross entropy
+**特點：
+    A.用於多類別分類問題，但標籤是整數（即類別索引），而不是 one-hot 編碼。
+    B.適合處理標籤數據量大時，節省空間和計算資源。
+    C.當模型的預測與實際標籤不匹配時，損失會增加。
+
+

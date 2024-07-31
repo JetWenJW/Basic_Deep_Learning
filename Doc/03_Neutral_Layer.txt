@@ -1,0 +1,19 @@
+這個檔案紀錄 03_Neutral_Layer.py中所有細節:
+
+
+1. 第25行中"get_layer(name="layer1").output"的功能及用意是甚麼?
+Ans:get_layer 是 Keras 中的一個方法，用於從模型中獲取指定名稱或索引的層。
+    它可以幫助你在構建模型後，根據名稱或索引來訪問特定的層，從而進行進一步的操作，
+    比如提取中間層的輸出、檢查層的配置、修改層的參數等。
+
+2. BTW, 第30行中"features = feature_extractor(x)     # 獲取特徵"
+就是使用到了02_Functionsl_API.py提到的Functional_API。
+
+*** 這整個程式碼展示如何使用 TensorFlow 和 Keras 建立一個神經網絡模型，
+    並進一步說明了如何提取中間層的輸出以及計算各層的參數個數。
+
+
+
+
+
+
